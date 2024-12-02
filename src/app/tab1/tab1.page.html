@@ -1,17 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<img src="../../assets/back.svg" class="background" alt="SVG Image" />
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+<section class="center-layout container vh-100">
+  <h4 class="text-center mb-5 w-75">
+    Small steps lead to big changes. <br />Take control of your finances, one
+    calculation at a time!
+  </h4>
+  <div class="form-field w-100">
+    <label [ngClass]="focused ? 'label-focused' : ''">Enter Total Amount</label>
+    <input
+      type="number"
+      [(ngModel)]="amount"
+      (focus)="focused = true"
+      (blur)="onBlur($event)"
+      class="w-100 form-control"
+    />
+  </div>
+  <button
+    [disabled]="!amount"
+    (click)="goToSecondPage()"
+    class="btn btn-primary w-100 py-3 w-100"
+  >
+    Submit Total Amount
+  </button>
+</section>

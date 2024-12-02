@@ -1,17 +1,86 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="22"
+  height="22"
+  fill="currentColor"
+  class="bi bi-arrow-left-circle back"
+  viewBox="0 0 16 16"
+  (click)="goBack()"
+>
+  <path
+    fill-rule="evenodd"
+    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"
+  />
+</svg>
+<section class="center-layout container vh-100">
+  <div class="container mt-4">
+    <!-- Dropdown for selecting number of people -->
+    <div class="mb-3">
+      <label for="numberOfPeople" class="form-label w-100"
+        >Number of People</label
+      >
+      <select
+        id="numberOfPeople"
+        class="form-select rounded-pill"
+        [(ngModel)]="numberOfPeople"
+        (change)="updateTotal('percentage')"
+      >
+        <option *ngFor="let list of peopleOptions" [value]="list">
+          {{ list }}
+        </option>
+      </select>
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <!-- Slider for adjusting the tip percentage -->
+    <div class="mb-3">
+      <label for="tipPercentage" class="form-label w-100">Tip Percentage</label>
+      <input
+        id="tipPercentage"
+        type="range"
+        class="form-range"
+        [(ngModel)]="tipPercentage"
+        (input)="updateTotal('percentage')"
+        min="0"
+        max="100"
+      />
+      <div class="d-flex justify-content-between mt-1">
+        <small>0%</small>
+        <small>{{ tipPercentage | number : '1.0-2' }}%</small>
+        <small>100%</small>
+      </div>
+    </div>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
+    <!-- Editable text input for adjusting the tip -->
+    <div class="mb-3">
+      <label for="tipAmount" class="form-label w-100">Adjust Tip</label>
+      <div class="d-flex align-items-center">
+        <span class="me-3">$</span>
+        <input
+          id="tipAmount"
+          type="number"
+          class="form-control rounded-pill"
+          [(ngModel)]="tipAmount"
+          (input)="updateTotal('amount')"
+          placeholder="Enter tip amount"
+        />
+      </div>
+    </div>
+
+    <!-- Display the total amount per person -->
+
+    <div class="d-flex justify-content-between w-100">
+      <div>
+        <label for="totalPerPerson" class="form-label">Total per Person</label>
+      </div>
+      <div>
+        <input
+          id="totalPerPerson"
+          type="text"
+          class="form-control border-0 text-end"
+          [value]="totalPerPerson | currency"
+          readonly
+        />
+      </div>
+    </div>
+  </div>
+</section>

@@ -34,4 +34,75 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+/* Importing Bootstrap SCSS file. */
+@import "bootstrap/scss/bootstrap";
+
+ion-header,
+ion-toolbar {
+  box-shadow: none !important;
+}
+
+.center-layout {
+  display: grid;
+  align-content: center; /* Centers content vertically */
+  justify-content: center; /* Centers content horizontally */
+}
+
+//forms
+input:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+// input style
+
+.form-field {
+  position: relative;
+  margin-bottom: 1rem;
+  height: 50px;
+
+  label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    padding: 0 0.25rem;
+    color: #939fab;
+    font-size: 1rem;
+    transition: 0.1s;
+  }
+
+  input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 17px;
+
+    border: 1px solid #e2e2e2;
+    border-radius: 50px;
+    outline: none;
+    padding: 1rem;
+    background: none;
+    z-index: 1;
+    color: #535353;
+  }
+
+  input:focus {
+    border-color: #cacaca;
+  }
+
+  .label-focused {
+    top: -0.4rem;
+    left: 0.8rem;
+    font-size: 14px;
+    background: #f8f9fa;
+    z-index: 10;
+  }
+}
+
+button {
+  border-radius: 50px;
+}
